@@ -4,7 +4,8 @@
             placeholder="Rechercher une ville"
             v-model="search"
             :fetch-suggestions='searchFilteredCities'
-            :trigger-on-focus='false'>
+            :trigger-on-focus='false'
+            :hide-loading='true'>
             <i slot="prefix" class="el-input__icon el-icon-search"></i>
         </el-autocomplete>
         <el-table v-if="!search" :data="cities" style="width: 100%">
@@ -20,7 +21,6 @@
                 </template>
             </el-table-column>
         </el-table>
-
         <el-table v-if="search && filteredCities" :data="filteredCities" style="width: 100%">
             <el-table-column prop="id" label="ID" width="180"></el-table-column>
             <el-table-column prop="name" label="Nom" width="180"></el-table-column>
@@ -34,14 +34,13 @@
                 </template>
             </el-table-column>
         </el-table>
-
-        <!-- {{filteredCities}} -->
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { store } from '@/store';
+import { City } from '@/types/city'
 
 @Component({
   components: {
@@ -55,7 +54,7 @@ export default class Home extends Vue {
       this.$store.dispatch('findAllCities');
     }
 
-    get cities() {
+    get cities(): City[] {
       return this.$store.getters.getAllCities;
     }
 
@@ -70,7 +69,7 @@ export default class Home extends Vue {
         this.$store.dispatch('searchCity', this.search)
     }
 
-    get filteredCities () {
+    get filteredCities (): City[]  {
         return this.$store.getters.getFilteredCities
     }
 

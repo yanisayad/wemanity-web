@@ -61,7 +61,7 @@ export const store = new Vuex.Store({
     actions: {
         searchCity(context, name) {
             axios
-            .get('http://localhost:7979/search/city?q=name:' + name)
+            .get('http://localhost:7979/search/city?q=name:' + name + '*')
             .then((response) => {
                 context.commit('setFilteredCities', response.data);
             })
