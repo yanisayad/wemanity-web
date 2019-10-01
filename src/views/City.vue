@@ -22,11 +22,12 @@ import { store } from '@/store';
 })
 
 export default class City extends Vue {
+
     public created() {
         this.$store.dispatch('findSelectedCity', this.$route.params.id);
     }
 
-    get city() {
+    get city() : City[] {
         return this.$store.getters.getSelectedCity;
     }
 }

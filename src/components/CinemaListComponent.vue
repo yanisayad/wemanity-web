@@ -22,16 +22,18 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { City } from '../types/city';
+import { Cinema } from '../types/cinema';
 
 @Component
 export default class CinemaListComponent extends Vue {
-  @Prop() private city: any;
+  @Prop() private city:any;
 
   public created() {
       this.$store.dispatch('findCinemasListByCity', this.$route.params.id);
   }
 
-  get cinemas() {
+  get cinemas() : Cinema[] {
       return this.$store.getters.getCinemasListByCity;
   }
 

@@ -23,5 +23,9 @@ export default new Router({
             name: 'cinema',
             component: () => import('./views/Cinema.vue'),
         },
+        {
+            path: '*',
+            redirect: '/'
+        },
     ],
 });
