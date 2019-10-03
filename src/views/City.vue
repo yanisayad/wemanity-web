@@ -27,7 +27,7 @@ export default class City extends Vue {
         this.$store.dispatch('findSelectedCity', this.$route.params.id);
     }
 
-    get city() : City[] {
+    get city(): City[] {
         return this.$store.getters.getSelectedCity;
     }
 }

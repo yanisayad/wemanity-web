@@ -40,7 +40,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { store } from '@/store';
-import { City } from '@/types/city'
+import { City } from '@/types/city';
 
 @Component({
   components: {
@@ -66,11 +66,11 @@ export default class Home extends Vue {
     }
 
     public searchFilteredCities() {
-        this.$store.dispatch('searchCity', this.search)
+        this.$store.dispatch('searchCity', this.search);
     }
 
-    get filteredCities (): City[]  {
-        return this.$store.getters.getFilteredCities
+    get filteredCities(): City[]  {
+        return this.$store.getters.getFilteredCities;
     }
 
 }

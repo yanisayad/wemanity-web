@@ -1,4 +1,4 @@
-import { Cinema } from './cinema'
+import { Cinema } from './cinema';
 
 export interface Movie {
     id?: number;

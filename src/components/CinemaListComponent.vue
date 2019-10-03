@@ -27,13 +27,13 @@ import { Cinema } from '../types/cinema';
 
 @Component
 export default class CinemaListComponent extends Vue {
-  @Prop() private city:any;
+  @Prop() private city: any;
 
   public created() {
       this.$store.dispatch('findCinemasListByCity', this.$route.params.id);
   }
 
-  get cinemas() : Cinema[] {
+  get cinemas(): Cinema[] {
       return this.$store.getters.getCinemasListByCity;
   }
 

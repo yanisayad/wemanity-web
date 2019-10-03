@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
         cinemasListByCity: [],
         selectedCinema: null,
         cinemaMovies: [],
-        filteredCities: []
+        filteredCities: [],
     },
 
     mutations: {
@@ -55,7 +55,7 @@ export const store = new Vuex.Store({
         },
         getFilteredCities(state) {
             return state.filteredCities;
-        }
+        },
     },
 
     actions: {
@@ -69,7 +69,7 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la récupération des villes : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -81,14 +81,14 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La requête a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch ((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la récupération des villes : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -102,50 +102,49 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la récupeération de la ville : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
-        findCinemasListByCity(context, city_id) {
+        findCinemasListByCity(context, idCity) {
             axios
-            .get('http://localhost:7979/city/' + city_id + '/cinemas')
+            .get('http://localhost:7979/city/' + idCity + '/cinemas')
             .then((response) => {
                 context.commit('setCinemasListByCity', response.data.cinemas);
                 Notification({
                     title: 'Succès',
                     message: 'La récupération des cinemas liés à cette ville a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la récupération des cinémas : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
-        findSelectedCinema(context, cinema_id) {
+        findSelectedCinema(context, idCinema) {
             axios
-            .get('http://localhost:7979/cinema/' + cinema_id)
+            .get('http://localhost:7979/cinema/' + idCinema)
             .then((response) => {
                 context.commit('setSelectedCinema', response.data);
                 Notification({
                     title: 'Succès',
                     message: 'La récupération du cinema a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors récupération du cinéma : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
         createCinema(context, data) {
-            console.log(data)
             axios
             .post('http://localhost:7979/city/' + data.city_id + '/cinema',
             {
@@ -158,14 +157,14 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La création du cinema a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la création du cinéma : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -177,14 +176,14 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La suppression du cinema a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la suppression du cinéma : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -199,33 +198,33 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La modification du cinema a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la modification du cinéma : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
-        findCinemaMovies(context, cinema_id) {
+        findCinemaMovies(context, idCinema) {
             axios
-            .get('http://localhost:7979/cinema/' + cinema_id + '/movies')
+            .get('http://localhost:7979/cinema/' + idCinema + '/movies')
             .then((response) => {
                 context.commit('setCinemaMovies', response.data.movies);
                 Notification({
                     title: 'Succès',
                     message: 'Récupération des films liés au cinema effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la récupération des films : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -242,14 +241,14 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La création a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la création du film : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -265,14 +264,14 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La modification a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la modification du film : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },
@@ -284,14 +283,14 @@ export const store = new Vuex.Store({
                 Notification({
                     title: 'Succès',
                     message: 'La suppression a été effectué avec succès',
-                    type: 'success'
+                    type: 'success',
                 });
             })
             .catch((error) => {
                 Notification({
                     title: 'Erreur',
                     message: 'Une erreur est survenue lors de la suppression du film : ' + error,
-                    type: 'error'
+                    type: 'error',
                 });
             });
         },

@@ -1,5 +1,3 @@
-import { City } from './city'
-
 export interface Cinema {
     id: number;
     street: string;
