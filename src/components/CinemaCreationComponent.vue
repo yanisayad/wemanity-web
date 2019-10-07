@@ -56,7 +56,7 @@ export default class CinemaCreationComponent extends Vue {
 
     public createCinema() {
         this.formatMovie(this.name, this.street, this.phone);
-        if (this.name === '' || this.street === '' || this.phone === '') {
+        if (this.name.trim() === '' || this.street.trim() === '' || this.phone.trim() === '') {
             this.errorMsg = true;
             return;
         }

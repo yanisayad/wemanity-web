@@ -148,9 +148,9 @@ export const store = new Vuex.Store({
             axios
             .post('http://localhost:7979/city/' + data.city_id + '/cinema',
             {
-                name:   data.name,
-                street: data.street,
-                phone:  data.phone,
+                name:   data.name.trim(),
+                street: data.street.trim(),
+                phone:  data.phone.trim(),
             })
             .then(() => {
                 this.dispatch('findCinemasListByCity', data.city_id);
@@ -190,9 +190,9 @@ export const store = new Vuex.Store({
         updateCinema(context, data) {
             axios
             .put('http://localhost:7979/cinema/' + data.id, {
-                name: data.name,
-                street: data.street,
-                phone: data.phone,
+                name: data.name.trim(),
+                street: data.street.trim(),
+                phone: data.phone.trim(),
             })
             .then(() => {
                 Notification({
@@ -232,9 +232,9 @@ export const store = new Vuex.Store({
             axios
             .post('http://localhost:7979/cinema/' + data.cinema_id + '/movie',
                 {
-                    name: data.name,
-                    start: data.start,
-                    end: data.end,
+                    name: data.name.trim(),
+                    start: data.start.trim(),
+                    end: data.end.trim(),
                 })
             .then(() => {
                 this.dispatch('findCinemaMovies', data.cinema_id);
@@ -255,9 +255,9 @@ export const store = new Vuex.Store({
         updateMovie(context, data) {
             axios
             .put('http://localhost:7979/movie/' + data.id, {
-                name: data.name,
-                start: data.start.date,
-                end: data.end.date,
+                name: data.name.trim(),
+                start: data.start.date.trim(),
+                end: data.end.date.trim(),
             })
             .then(() => {
                 this.dispatch('findCinemaMovies', data.cinema_id);

@@ -109,7 +109,7 @@ export default class MovieListComponent extends Vue {
 
     public createMovie() {
         this.formatMovie(this.name, this.start, this.end);
-        if (this.name === '' || this.start === '' || this.end === '') {
+        if (this.name.trim() === '' || this.start.trim() === '' || this.end.trim() === '') {
             this.errorMsg = true;
             return;
         }
